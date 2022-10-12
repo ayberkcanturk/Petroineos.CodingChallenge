@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-Petroineos.CodingChallenge-CAD73460-5701-4CD0-853F-9C784AEF0F14</UserSecretsId>
+	<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Petroineos.CodingChallenge.IntradayReport.Abstractions\Petroineos.CodingChallenge.IntradayReport.Abstractions.csproj" />
+    <ProjectReference Include="..\Petroineos.CodingChallenge.IntradayReport.AggregationService\Petroineos.CodingChallenge.IntradayReport.AggregationService.csproj" />
+    <ProjectReference Include="..\Petroineos.CodingChallenge.IntradayReport.CsvWriter\Petroineos.CodingChallenge.IntradayReport.CsvWriter.csproj" />
+    <ProjectReference Include="..\Petroineos.CodingChallenge.PowerTradeService.Abstractions\Petroineos.CodingChallenge.PowerTradeService.Abstractions.csproj" />
+    <ProjectReference Include="..\Petroineos.CodingChallenge.PowerTradeService.ExternalImpl\Petroineos.CodingChallenge.PowerTradeService.ExternalImpl.csproj" />
+  </ItemGroup>
+</Project>

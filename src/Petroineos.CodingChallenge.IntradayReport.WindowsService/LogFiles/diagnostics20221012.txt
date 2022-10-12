@@ -1,0 +1,71 @@
+2022-10-12 12:30:54.262 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 12:30:55.628 +01:00 [DBG] Hosting starting
+2022-10-12 12:30:55.636 +01:00 [INF] Worker running at: "2022-10-12T12:30:55.6326613+01:00"
+2022-10-12 12:30:55.646 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-12 12:30:55.647 +01:00 [INF] Hosting environment: Development
+2022-10-12 12:30:55.647 +01:00 [INF] Content root path: C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService
+2022-10-12 12:30:55.648 +01:00 [DBG] Hosting started
+2022-10-12 12:30:56.648 +01:00 [INF] Worker running at: "2022-10-12T12:30:56.6489277+01:00"
+2022-10-12 12:30:57.659 +01:00 [INF] Worker running at: "2022-10-12T12:30:57.6592195+01:00"
+2022-10-12 12:54:45.133 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 12:54:45.478 +01:00 [DBG] Hosting starting
+2022-10-12 12:54:45.485 +01:00 [INF] Worker running at: "2022-10-12T12:54:45.4822611+01:00"
+2022-10-12 12:54:45.493 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-12 12:54:45.494 +01:00 [INF] Hosting environment: Development
+2022-10-12 12:54:45.495 +01:00 [INF] Content root path: C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService
+2022-10-12 12:54:45.496 +01:00 [DBG] Hosting started
+2022-10-12 12:54:46.501 +01:00 [INF] Worker running at: "2022-10-12T12:54:46.5017149+01:00"
+2022-10-12 17:12:49.814 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 17:12:50.265 +01:00 [DBG] Hosting starting
+2022-10-12 17:12:52.426 +01:00 [INF] Worker running at: "2022-10-12T17:12:52.4225599+01:00"
+2022-10-12 17:12:54.793 +01:00 [INF] Fetching trades for "2022-10-12T17:12:54.4691164+01:00"
+2022-10-12 17:12:59.205 +01:00 [ERR] One or more errors occurred. (Value cannot be null. (Parameter 'folderPath'))
+System.AggregateException: One or more errors occurred. (Value cannot be null. (Parameter 'folderPath'))
+ ---> System.ArgumentNullException: Value cannot be null. (Parameter 'folderPath')
+   at Petroineos.CodingChallenge.IntradayReport.CsvWriter.CsvReportWriter.WriteAsync[TEntity](String folderPath, String fileName, IEnumerable`1 entities, CancellationToken cancellationToken) in C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.CsvWriter\CsvReportWriter.cs:line 17
+   at Petroineos.CodingChallenge.IntradayReport.AggregationService.IntradayReportAggregationService.ExecuteAsync(CancellationToken cancellationToken) in C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.AggregationService\IntradayReportAggregationService.cs:line 52
+   at Petroineos.CodingChallenge.IntradayReport.WindowsService.Worker.<>c__DisplayClass5_0.<<ExecuteWithWaitAndRetry>b__2>d.MoveNext() in C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService\Worker.cs:line 60
+--- End of stack trace from previous location ---
+   at Polly.AsyncPolicy.<>c__DisplayClass40_0.<<ImplementationAsync>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func`3 action, Context context, CancellationToken cancellationToken, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates`1 shouldRetryResultPredicates, Func`5 onRetryAsync, Int32 permittedRetryCount, IEnumerable`1 sleepDurationsEnumerable, Func`4 sleepDurationProvider, Boolean continueOnCapturedContext)
+   at Polly.AsyncPolicy.ExecuteAsync(Func`3 action, Context context, CancellationToken cancellationToken, Boolean continueOnCapturedContext)
+   at Petroineos.CodingChallenge.IntradayReport.WindowsService.Worker.ExecuteWithWaitAndRetry(CancellationToken cancellationToken) in C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService\Worker.cs:line 59
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.WaitAllCore(Task[] tasks, Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.Tasks.Task.WaitAll(Task[] tasks)
+   at Petroineos.CodingChallenge.IntradayReport.WindowsService.Worker.ExecuteAsync(CancellationToken cancellationToken) in C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService\Worker.cs:line 34
+2022-10-12 17:17:54.460 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 17:17:54.764 +01:00 [DBG] Hosting starting
+2022-10-12 17:58:27.281 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 17:58:27.659 +01:00 [DBG] Hosting starting
+2022-10-12 17:58:29.812 +01:00 [INF] Worker running at: "2022-10-12T17:58:29.8076508+01:00"
+2022-10-12 17:59:52.471 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 17:59:52.798 +01:00 [DBG] Hosting starting
+2022-10-12 17:59:54.826 +01:00 [INF] Worker running at: "2022-10-12T17:59:54.8226236+01:00"
+2022-10-12 18:01:47.861 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 18:01:48.177 +01:00 [DBG] Hosting starting
+2022-10-12 18:01:49.544 +01:00 [INF] Worker running at: "2022-10-12T18:01:49.5386090+01:00"
+2022-10-12 18:03:42.560 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 18:03:42.851 +01:00 [DBG] Hosting starting
+2022-10-12 18:03:44.924 +01:00 [INF] Worker running at: "2022-10-12T18:03:44.9202971+01:00"
+2022-10-12 18:03:48.193 +01:00 [INF] Fetching trades for "2022-10-12T18:03:48.1930012+01:00"
+2022-10-12 18:03:49.169 +01:00 [INF] Worker running at: "2022-10-12T18:03:49.1698708+01:00"
+2022-10-12 18:03:50.177 +01:00 [INF] Fetching trades for "2022-10-12T18:03:50.1779569+01:00"
+2022-10-12 18:03:51.366 +01:00 [INF] Worker running at: "2022-10-12T18:03:51.3668738+01:00"
+2022-10-12 18:03:52.459 +01:00 [INF] Fetching trades for "2022-10-12T18:03:52.4591778+01:00"
+2022-10-12 18:03:53.414 +01:00 [INF] Worker running at: "2022-10-12T18:03:53.4146049+01:00"
+2022-10-12 18:03:54.514 +01:00 [INF] Fetching trades for "2022-10-12T18:03:54.5142095+01:00"
+2022-10-12 18:03:55.413 +01:00 [INF] Worker running at: "2022-10-12T18:03:55.4129484+01:00"
+2022-10-12 18:03:56.313 +01:00 [INF] Fetching trades for "2022-10-12T18:03:56.3135809+01:00"
+2022-10-12 18:03:57.105 +01:00 [INF] Worker running at: "2022-10-12T18:03:57.1053683+01:00"
+2022-10-12 18:03:58.069 +01:00 [INF] Fetching trades for "2022-10-12T18:03:58.0697499+01:00"
+2022-10-12 18:04:01.087 +01:00 [INF] Worker running at: "2022-10-12T18:04:01.0875433+01:00"
+2022-10-12 18:05:24.456 +01:00 [INF] Petroineos.CodingChallenge starting!
+2022-10-12 18:05:24.897 +01:00 [DBG] Hosting starting
+2022-10-12 18:05:27.640 +01:00 [INF] Worker running at: "2022-10-12T18:05:27.6362186+01:00"
+2022-10-12 18:05:29.638 +01:00 [INF] Fetching trades for "2022-10-12T18:05:29.1591047+01:00"
+2022-10-12 18:05:29.658 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-12 18:05:29.658 +01:00 [INF] Hosting environment: Development
+2022-10-12 18:05:29.659 +01:00 [INF] Content root path: C:\workspace\Petroineos.CodingChallenge\src\Petroineos.CodingChallenge.IntradayReport.WindowsService
+2022-10-12 18:05:29.660 +01:00 [DBG] Hosting started
