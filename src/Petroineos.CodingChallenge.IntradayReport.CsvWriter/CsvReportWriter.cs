@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests")]
 [assembly: InternalsVisibleTo("Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter
