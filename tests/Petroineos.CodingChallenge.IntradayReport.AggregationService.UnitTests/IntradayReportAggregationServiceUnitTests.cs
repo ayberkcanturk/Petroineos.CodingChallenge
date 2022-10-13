@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Moq;
 using Petroineos.CodingChallenge.IntradayReport.Abstractions;
 using Petroineos.CodingChallenge.IntradayReport.CsvWriter;
 using Petroineos.CodingChallenge.PowerTradeService.Abstractions;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
@@ -49,19 +49,19 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
             await intradayReportAggregationService.Object.ExecuteAsync(cancellationToken);
 
             powerTradeServiceMock.Verify(r => r.GetTradesAsync(currentDateTime, cancellationToken), Times.Once);
-            reportWriterMock.Verify(r=>r.WriteAsync(folderPath, fileName, It.IsAny<IEnumerable<PowerPeriod>>(), cancellationToken), Times.Once);
+            reportWriterMock.Verify(r => r.WriteAsync(folderPath, fileName, It.IsAny<IEnumerable<PowerPeriod>>(), cancellationToken), Times.Once);
         }
 
         [Theory]
         [ClassData(typeof(AggregationTestData))]
         public async Task ShouldAggregationServiceAggregateReceivedDataCorrectly(List<PowerTrade> powerTradeServiceResult, string aggregationResult)
-        { 
+        {
             var loggerMock = Moq.MockFactory.GetILogger<IntradayReportAggregationService>();
             var reportOptionsMock = new Mock<IOptionsMonitor<ReportOptions>>();
             reportOptionsMock.Setup(r => r.CurrentValue).Returns(new ReportOptions()
             {
                 FolderPath = "test.csv"
-        });
+            });
 
             var powerTradeServiceMock = new Mock<IPowerTradeService>();
             powerTradeServiceMock.Setup(p => p.GetTradesAsync(It.IsAny<DateTime>(), new CancellationToken(false)))

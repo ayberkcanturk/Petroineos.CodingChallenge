@@ -1,7 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Moq;
+using System;
+using System.Diagnostics;
 
 namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests.Moq
 {
@@ -20,8 +20,8 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
                 .Callback(new InvocationAction(invocation =>
                 {
                     var logLevel = (LogLevel)invocation.Arguments[0]; // The first two will always be whatever is specified in the setup above
-                        var eventId = (EventId)invocation.Arguments[1];  // so I'm not sure you would ever want to actually use them
-                        var state = invocation.Arguments[2];
+                    var eventId = (EventId)invocation.Arguments[1];  // so I'm not sure you would ever want to actually use them
+                    var state = invocation.Arguments[2];
                     var exception = (Exception)invocation.Arguments[3];
                     var formatter = invocation.Arguments[4];
 

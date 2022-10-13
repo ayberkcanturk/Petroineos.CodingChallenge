@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Petroineos.CodingChallenge.PowerTradeService.Abstractions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Petroineos.CodingChallenge.PowerTradeService.Abstractions;
 
 namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
 {
