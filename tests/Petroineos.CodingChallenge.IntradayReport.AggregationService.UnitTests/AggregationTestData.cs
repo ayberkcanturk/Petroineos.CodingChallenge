@@ -68,7 +68,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
                         new PowerPeriod() { Period = 24, Volume = -20 },
                     }}
                 },
-                "Period,Volume\r\n1,150\r\n2,150\r\n3,150\r\n4,150\r\n5,150\r\n6,150\r\n7,150\r\n8,150\r\n9,150\r\n10,150\r\n11,150\r\n12,150\r\n13,80\r\n14,80\r\n15,80\r\n16,80\r\n17,80\r\n18,80\r\n19,80\r\n20,80\r\n21,80\r\n22,80\r\n23,80\r\n24,80\r\n"
+                "Time,Volume\r\n23:00,150\r\n00:00,150\r\n01:00,150\r\n02:00,150\r\n03:00,150\r\n04:00,150\r\n05:00,150\r\n06:00,150\r\n07:00,150\r\n08:00,150\r\n09:00,150\r\n10:00,150\r\n11:00,80\r\n12:00,80\r\n13:00,80\r\n14:00,80\r\n15:00,80\r\n16:00,80\r\n17:00,80\r\n18:00,80\r\n19:00,80\r\n20:00,80\r\n21:00,80\r\n22:00,80\r\n"
             };
         }
 

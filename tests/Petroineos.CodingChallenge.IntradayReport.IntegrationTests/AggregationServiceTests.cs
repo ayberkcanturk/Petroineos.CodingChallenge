@@ -38,7 +38,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.IntegrationTests
             });
 
             var powerTradeService = serviceProvider.GetRequiredService<IPowerTradeService>();
-            var reportWrite = serviceProvider.GetRequiredService<IReportWriter>();
+            var reportWrite = serviceProvider.GetRequiredService<IReportWriter<PowerTradeReport>>();
 
             var aggregationServiceMock =
                 new Mock<IntradayReportAggregationService>(logger, reportOptions.Object, powerTradeService, reportWrite);
@@ -56,7 +56,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.IntegrationTests
             using (var reader = new StreamReader(fullPath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var records = csv.GetRecords<PowerPeriod>();
+                var records = csv.GetRecords<PowerTradeReport>();
                 records.Should().HaveCount(24, "because there are 24 hours in a day.");
             }
         }

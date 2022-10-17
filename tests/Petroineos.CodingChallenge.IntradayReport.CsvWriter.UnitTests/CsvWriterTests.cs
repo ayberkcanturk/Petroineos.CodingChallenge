@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Petroineos.CodingChallenge.IntradayReport.Abstractions;
 using Xunit;
 
 namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests
@@ -16,11 +17,11 @@ namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests
         public async Task ShouldThrowExceptionOnNotExpectedNullArguments()
         {
             var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "CsvFiles");
-            var fileName = $"test.csv";
+            const string fileName = $"test.csv";
             var cancellationToken = new CancellationToken(false);
-            var entities = new List<PowerTrade>();
+            var entities = new List<PowerTradeReport>();
 
-            var reportWriterMock = new Mock<CsvReportWriter>();
+            var reportWriterMock = new Mock<CsvReportWriter<PowerTradeReport>>();
 
             Func<Task> folderPathNull = async () => await reportWriterMock.Object.WriteAsync(null, fileName, entities, cancellationToken);
             await folderPathNull.Should().ThrowAsync<ArgumentNullException>();
@@ -38,14 +39,14 @@ namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests
         public async Task ShouldCsvContainsCorrectInformation()
         {
             var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "CsvFiles");
-            var fileName = $"test.csv";
+            const string fileName = $"test.csv";
             var cancellationToken = new CancellationToken(false);
-            var entities = new List<PowerPeriod>()
+            var entities = new List<PowerTradeReport>()
             {
-                new PowerPeriod(){ Period = 1, Volume = 12.00 }
+                new("1:00", 12.00)
             };
 
-            var reportWriterMock = new Mock<CsvReportWriter>();
+            var reportWriterMock = new Mock<CsvReportWriter<PowerTradeReport>>();
             var writer = new StringWriter();
 
             reportWriterMock.Setup(r => r.GetTextWriter(It.IsAny<string>()))
@@ -53,7 +54,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests
 
             await reportWriterMock.Object.WriteAsync(folderPath, fileName, entities, cancellationToken);
 
-            writer.ToString().Should().Be("Period,Volume\r\n1,12\r\n");
+            writer.ToString().Should().Be("Time,Volume\r\n1:00,12\r\n");
         }
     }
 }

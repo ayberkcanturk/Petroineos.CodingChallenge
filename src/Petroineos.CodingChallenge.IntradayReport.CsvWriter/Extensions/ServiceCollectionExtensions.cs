@@ -7,7 +7,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.Extensions
     {
         public static IServiceCollection UseCsvReportWriter(this IServiceCollection services)
         {
-            services.AddTransient<IReportWriter, CsvReportWriter>();
+            services.AddTransient<IReportWriter<PowerTradeReport>, CsvReportWriter<PowerTradeReport>>();
 
             return services;
         }

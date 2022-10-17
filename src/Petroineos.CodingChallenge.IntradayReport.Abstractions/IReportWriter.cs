@@ -1,8 +1,9 @@
 ﻿namespace Petroineos.CodingChallenge.IntradayReport.Abstractions
 {
-    public interface IReportWriter
+    public interface IReportWriter<in TEntity>
     {
-        public Task WriteAsync<TEntity>(string? folderPath, string fileName,
+        public Task WriteAsync(string? folderPath, 
+            string fileName,
             IEnumerable<TEntity> entities,
             CancellationToken cancellationToken);
     }

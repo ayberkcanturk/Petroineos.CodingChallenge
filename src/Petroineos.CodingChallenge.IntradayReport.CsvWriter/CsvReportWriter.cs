@@ -7,12 +7,11 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter
 {
-    public class CsvReportWriter : IReportWriter
+    public class CsvReportWriter<TEntity> : IReportWriter<TEntity>
     {
         internal virtual TextWriter GetTextWriter(string fullPath) => new StreamWriter(fullPath);
-
-        public async Task WriteAsync<TEntity>(string? folderPath, string fileName,
-            IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+        
+        public async Task WriteAsync(string? folderPath, string fileName, IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(folderPath))
                 throw new ArgumentNullException(nameof(folderPath));

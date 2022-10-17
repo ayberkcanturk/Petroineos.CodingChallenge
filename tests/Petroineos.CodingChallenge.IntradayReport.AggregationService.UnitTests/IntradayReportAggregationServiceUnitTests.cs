@@ -34,9 +34,9 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
             powerTradeServiceMock.Setup(p => p.GetTradesAsync(It.IsAny<DateTime>(), new CancellationToken(false)))
                 .ReturnsAsync(new List<PowerTrade>());
 
-            var reportWriterMock = new Mock<IReportWriter>();
+            var reportWriterMock = new Mock<IReportWriter<PowerTradeReport>>();
             reportWriterMock.Setup(r => r.WriteAsync(It.IsAny<string>(), It.IsAny<string>(),
-                It.IsAny<IEnumerable<PowerTrade>>(), It.IsAny<CancellationToken>()))
+                It.IsAny<IEnumerable<PowerTradeReport>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.CompletedTask);
 
             var intradayReportAggregationService = new Mock<IntradayReportAggregationService>(loggerMock.Object,
@@ -49,7 +49,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
             await intradayReportAggregationService.Object.ExecuteAsync(cancellationToken);
 
             powerTradeServiceMock.Verify(r => r.GetTradesAsync(currentDateTime, cancellationToken), Times.Once);
-            reportWriterMock.Verify(r => r.WriteAsync(folderPath, fileName, It.IsAny<IEnumerable<PowerPeriod>>(), cancellationToken), Times.Once);
+            reportWriterMock.Verify(r => r.WriteAsync(folderPath, fileName, It.IsAny<IEnumerable<PowerTradeReport>>(), cancellationToken), Times.Once);
         }
 
         [Theory]
@@ -67,7 +67,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests
             powerTradeServiceMock.Setup(p => p.GetTradesAsync(It.IsAny<DateTime>(), new CancellationToken(false)))
                 .ReturnsAsync(powerTradeServiceResult);
 
-            var reportWriterMock = new Mock<CsvReportWriter>();
+            var reportWriterMock = new Mock<CsvReportWriter<PowerTradeReport>>();
             var writer = new StringWriter();
 
             reportWriterMock.Setup(r => r.GetTextWriter(It.IsAny<string>()))
