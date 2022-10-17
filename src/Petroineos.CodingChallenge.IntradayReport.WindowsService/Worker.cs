@@ -26,13 +26,13 @@ namespace Petroineos.CodingChallenge.IntradayReport.WindowsService
                 {
                     _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
-                    await Task.WhenAll(ExecuteWithWaitAndRetry(cancellationToken), 
+                    await Task.WhenAll(ExecuteWithWaitAndRetry(cancellationToken),
                          Task.Delay(TimeSpan.FromSeconds(_workerServiceOptionsMonitor.CurrentValue.TaskDelayInSeconds), cancellationToken));
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex,"{Message}", ex.Message);
+                _logger.LogError(ex, "{Message}", ex.Message);
 
                 Environment.Exit(1);
             }

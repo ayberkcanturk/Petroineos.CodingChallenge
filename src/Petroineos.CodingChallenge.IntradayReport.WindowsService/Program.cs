@@ -8,7 +8,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.WindowsService
 {
     public class Program
     {
-        private static IConfigurationRoot? ConfigurationRoot;
+        private static IConfigurationRoot? _configurationRoot;
 
         public static void Main(string[] args)
         {
@@ -36,15 +36,15 @@ namespace Petroineos.CodingChallenge.IntradayReport.WindowsService
                         .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
 
-                    ConfigurationRoot = configuration.Build();
+                    _configurationRoot = configuration.Build();
 
                 })
                 .ConfigureServices(services =>
                 {
                     services.UsePowerTradeServiceExternalImpl();
                     services.UseCsvReportWriter();
-                    services.UseIntradayAggregationService(ConfigurationRoot);
-                    services.Configure<WorkerServiceOptions>(ConfigurationRoot?.GetSection(nameof(WorkerServiceOptions)));
+                    services.UseIntradayAggregationService(_configurationRoot);
+                    services.Configure<WorkerServiceOptions>(_configurationRoot?.GetSection(nameof(WorkerServiceOptions)));
                     services.AddHostedService<Worker>();
                 })
                 .Build();
