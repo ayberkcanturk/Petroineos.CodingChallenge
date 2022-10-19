@@ -56,7 +56,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService
         {
             var calculatedTime = new TimeSpan(period == 24 ? 00 : period, 0, 0)
                 .Subtract(new TimeSpan(2, 0, 0))
-                .ToTimeInPreviousDay();
+                .ToTime();
 
             return $"{calculatedTime.Hours:00}:{calculatedTime.Minutes:00}";
         }

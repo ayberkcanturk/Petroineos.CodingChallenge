@@ -2,15 +2,13 @@
 {
     public static class TimeSpanExtensions
     {
-        public static TimeSpan ToTimeInPreviousDay(this TimeSpan timeSpan)
+        public static TimeSpan ToTime(this TimeSpan timeSpan)
         {
-            if (timeSpan >= MidNight) return timeSpan;
+            var time = TimeSpan.FromTicks(timeSpan.Ticks % new TimeSpan(24, 0, 0).Ticks);
 
-            timeSpan = timeSpan.Add(new TimeSpan((timeSpan.Days + 1) * 24, 0, 0));
-
-            return timeSpan;
+            return timeSpan.IsNegative() ? time.Add(new TimeSpan(24, 0, 0)) : time;
         }
 
-        public static TimeSpan MidNight => new(0, 0, 0);
+        public static bool IsNegative(this TimeSpan timeSpan) => timeSpan < TimeSpan.Zero;
     }
 }
