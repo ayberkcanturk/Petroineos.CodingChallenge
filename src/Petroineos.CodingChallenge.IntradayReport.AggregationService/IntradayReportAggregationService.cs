@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Petroineos.CodingChallenge.IntradayReport.Abstractions;
+using Petroineos.CodingChallenge.IntradayReport.AggregationService.Extensions;
 using Petroineos.CodingChallenge.PowerTradeService.Abstractions;
 using System.Runtime.CompilerServices;
-using TimeSpan = System.TimeSpan;
 
 [assembly: InternalsVisibleTo("Petroineos.CodingChallenge.IntradayReport.AggregationService.UnitTests")]
 [assembly: InternalsVisibleTo("Petroineos.CodingChallenge.IntradayReport.IntegrationTests")]
@@ -54,12 +54,9 @@ namespace Petroineos.CodingChallenge.IntradayReport.AggregationService
 
         internal static string CalculateReportTimeFromPeriod(int period)
         {
-            var calculatedTime = TimeSpan
-                .Parse($"{(period == 24 ? 00 : period)}:00")
-                .Subtract(new TimeSpan(2, 0, 0));
-
-            if (calculatedTime < Extensions.TimeSpan.MidNight)
-                calculatedTime = calculatedTime.Add(new TimeSpan(24,0,0));
+            var calculatedTime = new TimeSpan(period == 24 ? 00 : period, 0, 0)
+                .Subtract(new TimeSpan(2, 0, 0))
+                .ToTimeInPreviousDay();
 
             return $"{calculatedTime.Hours:00}:{calculatedTime.Minutes:00}";
         }
