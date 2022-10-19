@@ -1,12 +1,11 @@
 using FluentAssertions;
 using Moq;
-using Petroineos.CodingChallenge.PowerTradeService.Abstractions;
+using Petroineos.CodingChallenge.IntradayReport.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Petroineos.CodingChallenge.IntradayReport.Abstractions;
 using Xunit;
 
 namespace Petroineos.CodingChallenge.IntradayReport.CsvWriter.UnitTests
