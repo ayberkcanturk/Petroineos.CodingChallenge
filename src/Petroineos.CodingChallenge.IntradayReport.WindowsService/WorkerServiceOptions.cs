@@ -2,7 +2,7 @@
 {
     public class WorkerServiceOptions
     {
-        public int TaskDelayInSeconds { get; set; }
-        public int NumOfRetries { get; set; }
+        public double TaskDelayInSeconds { get; set; } = 60 * 60;
+        public int NumOfRetries { get; set; } = 1;
     }
 }
