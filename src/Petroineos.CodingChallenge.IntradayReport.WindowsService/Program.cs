@@ -1,6 +1,7 @@
 using System.Reflection;
 using Petroineos.CodingChallenge.IntradayReport.AggregationService.Extensions;
 using Petroineos.CodingChallenge.IntradayReport.CsvWriter.Extensions;
+using Petroineos.CodingChallenge.IntradayReport.WindowsService.Extensions;
 using Petroineos.CodingChallenge.PowerTradeService.ExternalImpl.Extensions;
 using Serilog;
 
@@ -44,8 +45,7 @@ namespace Petroineos.CodingChallenge.IntradayReport.WindowsService
                     services.UsePowerTradeServiceExternalImpl();
                     services.UseCsvReportWriter();
                     services.UseIntradayAggregationService(_configurationRoot);
-                    services.Configure<WorkerServiceOptions>(_configurationRoot?.GetSection(nameof(WorkerServiceOptions)));
-                    services.AddHostedService<Worker>();
+                    services.UseWorkerService(_configurationRoot);
                 })
                 .Build();
 
